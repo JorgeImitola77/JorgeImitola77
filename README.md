@@ -1,81 +1,70 @@
-<h1 align="center">Hola, soy Jorge Imitola 👋</h1>
+## Jorge Imitola
 
-<p align="center">
-  Desarrollador de software. Me interesa el backend que no se rompe:<br>
-  reglas de negocio puras, datos consistentes y APIs que dicen la verdad.
-</p>
+Final-semester software engineering student in Colombia, looking for my first
+role as a backend or full-stack engineer.
 
----
-
-### Sobre mí
-
-Construyo aplicaciones completas —API, base de datos y frontend— y me tomo en serio
-la parte que no se ve. Un ejemplo de cómo pienso: en mi planificador de cuotas el
-dinero **nunca** es un número de punto flotante, el plan y sus pagos se escriben en
-una sola transacción, y dos personas no pueden pagar la misma cuota a la vez.
-
-- 🔭 Trabajando en servicios en **Go** con **PostgreSQL** y frontends en **React + TypeScript**
-- 🌱 Explorando **IA aplicada**: modelos en el borde (Edge AI) y analítica educativa
-- 🧰 Me gusta separar responsabilidades: reglas puras, SQL aislado, HTTP en un solo lugar
-- 📫 Escríbeme a **jdimitola77@gmail.com**
+I like the kind of problem where the obvious answer is wrong. The one I keep
+coming back to is money: a total that has to split evenly into installments,
+where the remainder has to land somewhere, where a float will eventually cost
+someone a cent, and where two requests can try to pay the same installment at
+the same moment.
 
 ---
 
-### Tecnologías
+### What I've built
 
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+**[installment_planner](https://github.com/JorgeImitola77/installment_planner)** — Go · PostgreSQL · React · TypeScript · Docker
 
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white)
+A service that splits a purchase into interest-free installments and tracks the
+payments. I built it to learn, but the parts I spent the most time on were the
+ones that are easy to get wrong:
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+- Money is stored and calculated in **cents as integers**, never floats. The
+  remainder of an uneven split is distributed deterministically instead of
+  being rounded away.
+- A plan and its installments are written in **one transaction**, so a partial
+  plan can never exist in the database.
+- Paying an installment twice concurrently is prevented **at the database
+  level**, with a partial unique index — not just with an `if` in the handler.
+- The business rules live in a pure package with no SQL and no HTTP, so they're
+  tested without a container running. `internal/storage` is the only package
+  that writes SQL; `api/client.ts` is the only module that calls `fetch`.
 
----
+8 Go test files, 7 frontend test files, 100% line coverage on the frontend.
+The README explains the reasoning behind each decision, including the schema.
 
-### Proyectos destacados
+**[ms-app](https://github.com/JorgeImitola77/ms-app)** — Python · FastAPI · PostgreSQL · React · Vite · Tailwind
+A full-stack app with a FastAPI backend and workflow automation through n8n.
 
-| Proyecto | De qué se trata | Stack |
-|---|---|---|
-| **[installment_planner](https://github.com/JorgeImitola77/installment_planner)** | Divide una compra en cuotas sin interés, como un *buy now, pay later*. Dinero en centavos, plan y cuotas en una sola transacción, sin pagos duplicados bajo concurrencia. | Go · PostgreSQL · React · TypeScript · Docker |
-| **[ms-app](https://github.com/JorgeImitola77/ms-app)** | Aplicación con API en FastAPI, base de datos relacional y automatizaciones conectadas con n8n. | Python · FastAPI · PostgreSQL · React · Vite · Tailwind |
-| **[Edge-AI---OCR-Demo](https://github.com/JorgeImitola77/Edge-AI---OCR-Demo)** | Modelos de IA ejecutándose en el dispositivo: OCR local, con foco en latencia y procesamiento sin servidor. | C++ · Dart · Edge AI |
-| **[sezzle-calculator](https://github.com/JorgeImitola77/sezzle-calculator)** | Calculadora de pagos fraccionados en TypeScript, la semilla del planificador de cuotas. | TypeScript |
-| **[Explorapp](https://github.com/JorgeImitola77/Explorapp)** | Aplicación web de exploración construida con un frontend moderno. | React · Vite · Tailwind CSS |
+**[Edge-AI---OCR-Demo](https://github.com/JorgeImitola77/Edge-AI---OCR-Demo)** — C++ · Dart
+OCR running on-device instead of on a server, to keep latency low and the data local.
 
----
-
-### Cómo trabajo
-
-- **Reglas de negocio puras.** La lógica que importa se prueba sin levantar un contenedor.
-- **Un solo lugar por responsabilidad.** Solo una capa escribe SQL; solo un módulo llama a `fetch`.
-- **La base de datos también valida.** Restricciones `CHECK`, `UNIQUE` e índices parciales, no solo validación en el código.
-- **Commits que explican el porqué**, no el qué.
+**[sezzle-calculator](https://github.com/JorgeImitola77/sezzle-calculator)** — TypeScript
+A small installment calculator. It's where the planner above started.
 
 ---
 
-<div align="center">
+### Tools I work with
 
-![Estadísticas de GitHub](https://github-readme-stats.vercel.app/api?username=JorgeImitola77&show_icons=true&hide_border=true&count_private=true&theme=transparent)
-![Lenguajes más usados](https://github-readme-stats.vercel.app/api/top-langs/?username=JorgeImitola77&layout=compact&hide_border=true&langs_count=8&theme=transparent)
+**Languages:** Go, TypeScript, Python, Dart, C++
+**Frontend:** React, Vite, Tailwind CSS
+**Backend & data:** PostgreSQL, SQL, FastAPI, REST APIs
+**Other:** Docker, Docker Compose, Git, Vitest, Go's standard `testing`
 
-</div>
+I use Claude daily as part of how I work — mostly for reading unfamiliar code,
+reviewing my own before I commit it, and rubber-ducking a design decision until
+I can explain why I chose it. The reasoning in my READMEs is mine; the process
+of getting there is usually a conversation.
 
 ---
 
-<p align="center">
-  <a href="mailto:jdimitola77@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email">
-  </a>
-  <a href="https://github.com/JorgeImitola77">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub">
-  </a>
-</p>
+### What I haven't done yet
+
+I haven't deployed to AWS or run anything on Kubernetes, and I haven't set up a
+CI pipeline on a project of my own — my testing has been local so far. Those are
+the next things I want to learn, ideally somewhere with engineers who'll tell me
+when I'm wrong.
+
+---
+
+📫 **jdimitola77@gmail.com**
