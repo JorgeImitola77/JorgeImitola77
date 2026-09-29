@@ -3,12 +3,6 @@
 Final-semester software engineering student in Colombia, looking for my first
 role as a backend or full-stack engineer.
 
-I like the kind of problem where the obvious answer is wrong. The one I keep
-coming back to is money: a total that has to split evenly into installments,
-where the remainder has to land somewhere, where a float will eventually cost
-someone a cent, and where two requests can try to pay the same installment at
-the same moment.
-
 ---
 
 ### What I've built
@@ -46,7 +40,7 @@ A small installment calculator. It's where the planner above started.
 
 ### Tools I work with
 
-**Languages:** Go, TypeScript, Python, Dart, C++
+**Languages:** Go, TypeScript, Python, Dart
 **Frontend:** React, Vite, Tailwind CSS
 **Backend & data:** PostgreSQL, SQL, FastAPI, REST APIs
 **Other:** Docker, Docker Compose, Git, Vitest, Go's standard `testing`
@@ -67,4 +61,4 @@ when I'm wrong.
 
 ---
 
-📫 **jdimitola77@gmail.com**
+📫 **jdimitola7@gmail.com**
