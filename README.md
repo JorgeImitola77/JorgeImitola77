@@ -52,13 +52,4 @@ of getting there is usually a conversation.
 
 ---
 
-### What I haven't done yet
-
-I haven't deployed to AWS or run anything on Kubernetes, and I haven't set up a
-CI pipeline on a project of my own — my testing has been local so far. Those are
-the next things I want to learn, ideally somewhere with engineers who'll tell me
-when I'm wrong.
-
----
-
 📫 **jdimitola7@gmail.com**
